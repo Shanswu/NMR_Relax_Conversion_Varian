@@ -1,0 +1,12 @@
+
+
+
+
+set NCYCLIST=`awk '/^ncyc /{f=1;next}f{print $0;exit}' procpar`; echo $NCYCLIST
+set TIMET2=`awk '/^time_T2 /{f=1;next}f{print $2;exit}' procpar`; echo $TIMET2
+set SFRQ=`awk '/^sfrq /{f=1;next}f{print $2;exit}' procpar`; echo $SFRQ
+ 
+foreach I (`seq 2 ${#NCYCLIST}`)
+set NCYC=${NCYCLIST[$I]}; set FRQ=`echo ${NCYC}/${TIMET2} | bc -l`; echo $NCYC $TIMET2 $FRQ $SFRQ >> ncyc.txt
+end
+cat ncyc.txt
