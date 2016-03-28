@@ -1,6 +1,7 @@
+# This Script is used for catching up the Freqency points that are recorded in Relaxation Experiments
+# This script need the procpar file exist in the *.fid directory for the Agilent Varian Dataset
 
-
-
+# !/bin/csh -f
 
 set NCYCLIST=`awk '/^ncyc /{f=1;next}f{print $0;exit}' procpar`; echo $NCYCLIST
 set TIMET2=`awk '/^time_T2 /{f=1;next}f{print $2;exit}' procpar`; echo $TIMET2
